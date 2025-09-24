@@ -1,0 +1,48 @@
+import React from 'react';
+
+const Dashboard = ({ data }) => {
+  if (!data) {
+    return <div>No data available. Please go back to the form.</div>;
+  }
+
+  return (
+    <div className="dashboard-container">
+      <h1>Your Personalized Dashboard</h1>
+      <p>Here is your plan, powered by Ascend AI.</p>
+      
+      <section>
+        <h2>Your Goals</h2>
+        <ul>
+          {data.goals.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+        <h2>Relevant News</h2>
+        <ul>
+          {data.news.map((item, index) => (
+            <li key={index}><b>{item.headline}</b>: {item.summary}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+        <h2>Proactive Alerts</h2>
+        <p>{data.alerts}</p>
+      </section>
+
+      <section>
+        <h2>Daily Targets</h2>
+        <ul>
+          {data.targets.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      </section>
+    </div>
+  );
+};
+
+export default Dashboard;
